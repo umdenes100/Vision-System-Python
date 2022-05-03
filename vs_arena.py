@@ -180,6 +180,6 @@ def translate(marker, H,frame):
     n_marker = processed_Marker(marker.id, marker_coords_m[0,0], marker_coords_m[0,1], marker_theta)
     txt = "({},{},{})".format(marker_coords_px[0, 0, 0], marker_coords_px[0, 0, 1],marker_theta)
     frame = cv2.putText(frame, txt , (marker.corner1[0],marker.corner1[1]), cv2.FONT_HERSHEY_SIMPLEX, 
-                    .5, (255,0,0), 1, cv2.LINE_AA)
+                    .5, (255,145,0), 1, cv2.LINE_AA)
     return n_marker,frame
 
