@@ -69,6 +69,12 @@ def send_console_message(message: str):
     logging.debug(message)
     ws_server.send_message_to_all(json.dumps({'type': 'error', 'data': message}))
 
+def send_ml_to_visual(result, image):
+    if ws_server is None:
+        logging.error(f'no ws to display pred')
+        return
+    logging.debug("Sending to VS to display pred img")
+    ws_server.send_message_to_all(json.dumps({'type': 'pred_disp', 'result': result, 'img': image}))
 
 # The way we send the static HTML page is with a simple HTTP server. We only server from the static folder. Very insecure.
 class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):

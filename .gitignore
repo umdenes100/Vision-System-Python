@@ -5,3 +5,4 @@ teams.txt
 !/components/machinelearning/models/alextest_1_3.pth
 node_modules
 package*
+static/img_curr.jpg

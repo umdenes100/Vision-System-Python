@@ -78,7 +78,14 @@
                 </div>
             </div>
 
-            <textarea id="communication-window" style="height: 55%; width: 100%" readonly></textarea>
+            <textarea id="communication-window" style="height: 35%; width: 100%" readonly></textarea>
+
+            <div class="col-12">
+                <div class='row-2'>
+                <img id="pred-img" style="height: 60%; width: 60%;" class="center" src="/blank.jpg">
+                <!--<textarea id="pred-txt" style ="height: 1%; width: 30%" class="right" readonly>ML Predicts: </textarea> -->
+                </div>
+            </div>
 
             <div id="communication-window-options" class="col-12">
                 <label class="switch">
@@ -252,6 +259,19 @@
         console_window.scrollTop = console_window.scrollHeight;
     }
 
+    function prediction_disp(txt, img) {
+        //let pred_txt = document.getElementById('pred-txt');
+        let pred_img = document.getElementById('pred-img');
+        
+        //pred_txt.innerHTML = 'ML Predicts: ' + txt
+        pred_img.src = img + '?t=' + Date.now()
+    }
+
+    function prediction_img(img) {
+        let pred_img = document.getElementById('pred-img');
+        pred_img.src = img + '?t=' + Date.now()
+    }
+
     let images;
 
     window.onload = () => {
@@ -311,6 +331,9 @@
                 case 'jpegs':
                     images = message.data;
                     console.log('got images', images)
+                    break
+                case 'pred_disp':
+                    prediction_disp(message.result, message.img)                    
                     break
             }
         }

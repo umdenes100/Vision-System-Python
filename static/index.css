@@ -44,6 +44,13 @@ td {
     padding-right: 5px;
 }
 
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
 /*Make this div full height, but scrollable*/
 #communication-window-options {
     width: 100%;

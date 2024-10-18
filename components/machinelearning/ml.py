@@ -34,9 +34,9 @@ def start_ml():
 class MLProcessor:
 
     model_dir = '/home/visionsystem/Vision-System-Python/components/machinelearning/models/'
+    save_img_pth = '/home/visionsystem/Vision-System-Python/static/img_curr.jpg'
 
     def enqueue(self, message):
-
         message = json.loads(message)
         ip = message['ESPIP'][0]
         team_name = message['team_name']
@@ -89,6 +89,8 @@ class MLProcessor:
                     ret, frame = cap.read()
                 else:
                     raise Exception("Could not get image from WiFiCam (cv2)")
+
+                cv2.imwrite(self.save_img_pth, frame)                    
                 
                 logging.debug('Entering preprocess...' )
                 picture = preprocess(frame)
@@ -104,6 +106,7 @@ class MLProcessor:
             esp_server.send_prediction(team_name, str(results))
             client_server.send_console_message(
                 f"ML prediction from team {team_name} finished in {(time.perf_counter() - start):.2f} seconds. Result (prediction: {results}) sent to the teams wifi module.")
+            client_server.send_ml_to_visual(str(results), '/img_curr.jpg')
 
     def __init__(self):
         self.task_queue = queue.Queue()
