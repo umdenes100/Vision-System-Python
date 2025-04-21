@@ -223,7 +223,7 @@ def start_server():
                     ignorable_disconnects.add(client['address'][0])
                     # noinspection PyProtectedMember
                     ws_server._terminate_client_handler(client['handler'])
-            time.sleep(1)
+            time.sleep(3)
 
     threading.Thread(target=check_connection, daemon=True, name='ESP Check Connection').start()
 
