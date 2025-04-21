@@ -21,7 +21,7 @@ This also might entail updating the BIOS of the computer
     ```
 5. cd into folder
     ```shell
-   sudo cd Vision-System-Python
+   cd Vision-System-Python
    ```
 6. Change permissions of the installer scripts.
     ```shell
