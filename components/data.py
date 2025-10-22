@@ -126,6 +126,7 @@ team_types: dict = {
     3: "FIRE",
     4: "WATER",
     5: "SEED",
+    6: "HYDROGEN",
 }
 
 fake_esp_data: list = [
